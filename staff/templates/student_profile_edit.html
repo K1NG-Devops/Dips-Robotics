@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% include 'sidebar.html' %}
+
+{% block content %}
+    <h1>Edit Student Profile</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Save</button>
+    </form>
+{% endblock %}
+

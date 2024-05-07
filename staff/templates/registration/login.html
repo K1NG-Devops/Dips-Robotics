@@ -1,0 +1,191 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dips Robotics | Login</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'staff/plugins/fontawesome-free/css/all.min.css' %}">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="{% static 'staff/plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'staff/css/adminlte.min.css' %}">
+  <style>
+    .login-png {
+      border-radius: 50%;
+      border: 2px solid #ff5e1a;
+      margin-right: 10px;
+    }
+
+    .login-logo {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .brand-link {
+      text-align: center;
+    }
+    .brand-text {
+      font-size: 1.5rem;
+    }
+    .login-box-msg {
+      font-size: 1.5rem;
+    }
+    .login-card-body {
+      border-radius: 10px;
+    }
+
+    .btn-login {
+      width: 100%;
+      background-color: #ff5e1a;
+      border-color: #ff5e1a;
+    }
+
+    .footer-login-page {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+    }
+
+    .login-box-msg, .rem-lab {
+      color: #fff;
+    }
+
+
+  @media screen and (max-width:360) and (max-width: 768px) {
+    .login-png {
+      height: 100px;
+      width: 400px;
+    }
+    .login-box {
+      width: 90%; /* Makes the login box take up more of the screen */
+      margin: auto;
+    }
+
+    .login-logo, .login-card-body {
+      padding: 20px; /* Adds more padding for touch interaction */
+    }
+
+    .login-logo img {
+      height: 150px; /* Reduces the size of the logo */
+    }
+
+    .brand-text, .login-box-msg {
+      font-size: 1.2rem; /* Reduces the font size for smaller displays */
+    }
+
+    .btn-login {
+      padding: 10px 20px; /* Larger button for easier interaction */
+      font-size: 1rem; /* Larger font size for readability */
+    }
+
+    .input-group-text {
+      min-width: 40px; /* Adjusts the size of input group icons */
+    }
+
+    .footer-login-page {
+      position: relative; /* Adjusts the position of the footer */
+      padding: 10px 0; /* Adds padding to the footer */
+    }
+  }
+  </style>
+</head>
+{% block content %}
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <!-- Brand Logo -->
+    <img src="{% static 'staff/img/dips_logo.png' %}" alt="Dips Logo" class="img-circle elevation-2 login-png" style="height: 200px;">
+    <a href="#" class="brand-link">
+      <span class="brand-text" style="color: #1f1f1f; font-weight: 700; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Dips Robotics</span>
+    </a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="card">
+    <div class="card-body login-card-body" style="background-color: #3a3939;" >
+      <p class="login-box-msg">Sign in to start your session</p>
+      
+      <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        {% if form.errors %}
+        <div class="alert alert-danger">
+            {{ form.non_field_errors }}
+            {% for field in form %}
+                {{ field.errors }}
+            {% endfor %}
+        </div>
+        {% endif %}
+        <div class="input-group mb-3">
+          <input type="text" name="username" class="form-control" placeholder="Username" required>
+          <div class="input-group-append">
+            <div class="input-group-text" style="background-color: #fff;">
+              <span class="fas fa-user"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="password" name="password" class="form-control" placeholder="Password" required>
+          <div class="input-group-append">
+            <div class="input-group-text" style="background-color: #fff;">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8">
+            <div class="icheck-primary">
+              <input type="checkbox" id="remember">
+              <label for="remember">
+                Remember Me
+              </label>
+            </div>
+          </div>
+          <div class="col-4">
+            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+          </div>
+        </div>
+      </form>
+
+      <p class="mb-1">
+        <a href="forgot-password.html">forgot password</a>
+      </p>
+      <p class="mb-0">
+        <a href="{% url 'register_student' %}" class="text-center">Register a new membership</a>
+      </p>
+    </div>
+    <!-- /.login-card-body -->
+  </div>
+</div>
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li{% if message.tags %} class="{{ messages }}" {% endif %}>{{ message }}</li>"
+    {% endfor %}
+  </ul>
+{% endif %}
+<!-- /.login-box -->
+
+<div class="footer-login-page">
+  <footer>
+    <!-- To the right -->
+    <!-- Default to the left -->
+    <strong>Copyright &copy; 2024 <a href="">Dips Robotics</a>.</strong> All rights reserved.
+  </footer>
+</div>
+{% endblock %}
+
+<!-- jQuery -->
+<script src="{% static 'staff/plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'staff/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'staff/js/adminlte.min.js' %}"></script>
+</body>
+</html>

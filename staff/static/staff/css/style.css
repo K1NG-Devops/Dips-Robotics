@@ -1,0 +1,79 @@
+.card {
+    background-color: #fff; 
+    height: 450px;
+}
+
+.card-body {
+    border-radius: 0px;
+}
+#myChart {
+    background-color: #fff;
+    height: 300px;
+}
+
+.nav-item :active {
+    color: #000;
+}
+
+.main-sidebar {
+    background-color: #1f1f1f;
+}
+
+.inner {
+    background-color: #303030;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.btn-sidebar {
+    background-color: #dc5f0c;
+}
+
+.box-container {
+    display: flex !important;
+}
+
+.dips-bg-color{
+    font-weight: 600;
+}
+
+.dips-bg-color a {
+    color: #fff;
+}
+
+.d-block {
+    color: white !important;
+}
+
+.messages li {
+    list-style-type: none;
+    padding: 10px;
+    margin: 10px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+}
+
+
+
+
+@media (min-width: 480px) {
+    .box-container {
+        display: block !important;
+    }
+
+    .small-box {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: center;
+    }
+
+    .small-bo {
+        width: 150px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-left: 30px;
+    }
+}
+
