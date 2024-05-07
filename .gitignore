@@ -128,3 +128,18 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# media files
+media/
+
+# static files
+static/
+
+# pycharm ide settings
+.idea/
+
+staff_qrcodes/
+student_qrcodes/
+
+staticfiles/
+
