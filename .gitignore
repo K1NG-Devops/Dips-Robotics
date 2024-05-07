@@ -143,3 +143,6 @@ student_qrcodes/
 
 staticfiles/
 
+plugins/
+
+static/alt/
