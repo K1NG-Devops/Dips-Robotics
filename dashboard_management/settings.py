@@ -24,11 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-lg8ow$zyafi8y!07op%s(-7w8&h@888@8n)3r-x=!#3xx(@q1w"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 internal_IPS = [
-    '127.0.0.1'
 ]
 
 # Application definition
@@ -37,18 +36,17 @@ INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
-    "debug_toolbar",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "staff",
+    "attendance",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
@@ -73,10 +71,6 @@ TEMPLATES = [
     },
 ]
 
-from django.conf.urls.static import static
-from django.urls import path, include
-from django.conf import settings
-
 handler403 = 'staff.views.custom_403'
 
 WSGI_APPLICATION = "dashboard_management.wsgi.application"
@@ -86,9 +80,12 @@ WSGI_APPLICATION = "dashboard_management.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'kingdevops$DipsLMS',
+        'USER': '<kingdevops',
+        'PASSWORD': '$Marrion@King$123',
+        'HOST': 'kingdevops.mysql.pythonanywhere-services.com',
     }
 }
 
